@@ -1,3 +1,0 @@
-[submodule "pkgs/dms-shell"]
-	path = pkgs/dms-shell
-	url = https://aur.archlinux.org/dms-shell
