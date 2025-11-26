@@ -1,0 +1,19 @@
+pkgbase = greetd-dms-greeter
+	pkgdesc = DankMaterialShell greeter for greetd
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/AvengeMedia/DankMaterialShell
+	install = greetd-dms-greeter.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = greetd
+	depends = quickshell
+	optdepends = niri: Niri compositor support
+	optdepends = hyprland: Hyprland compositor support
+	optdepends = sway: Sway compositor support
+	backup = etc/greetd/config.toml
+	source = https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.6.2/dms-qml.tar.gz
+	sha256sums = 28d6b469d24c20846586b6500b1ade33ced45906b7265a6ed9b1629d68732cd0
+
+pkgname = greetd-dms-greeter
