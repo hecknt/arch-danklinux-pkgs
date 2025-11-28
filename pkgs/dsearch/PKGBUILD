@@ -1,0 +1,39 @@
+# Maintainer: Hec <hec@heccraft.com>
+
+pkgname=dsearch
+_pkgname=danksearch
+pkgver=0.0.7
+pkgrel=1
+pkgdesc="Indexed filesystem search in GO"
+arch=('x86_64' 'aarch64')
+url="https://danklinux.com"
+_url="https://github.com/AvengeMedia/$_pkgname"
+license=('MIT')
+depends=()
+makedepends=(go
+  git)
+optdepends=(dms-shell)
+source=("git+$_url.git")
+sha256sums=('SKIP')
+
+prepare() {
+	cd "$_pkgname"
+  git checkout v$pkgver
+}
+
+build() {
+	cd "$_pkgname"
+	make build
+}
+
+package() {
+	cd "$_pkgname"
+  ./bin/dsearch completion bash > dsearch.bash
+  ./bin/dsearch completion zsh > dsearch.zsh
+  ./bin/dsearch completion fish > dsearch.fish
+  install -Dm755 bin/dsearch $pkgdir/usr/bin/dsearch
+  install -Dm644 assets/dsearch.service $pkgdir/usr/lib/systemd/user/dsearch.service
+  install -Dm644 dsearch.bash $pkgdir/usr/share/bash-completion/completions/dsearch
+  install -Dm644 dsearch.zsh $pkgdir/usr/share/zsh/site-functions/_dsearch
+  install -Dm644 dsearch.fish $pkgdir/usr/share/fish/vendor_completions.d/dsearch.fish
+}
