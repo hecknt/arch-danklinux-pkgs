@@ -3,7 +3,7 @@
 _pkg1=DankMaterialShell
 pkgname=dms-shell
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -33,7 +33,7 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o dms ./cmd/dms
+	go build -ldflags="-X main.Version=v$pkgver" -o dms ./cmd/dms
 }
 
 package() {
