@@ -17,17 +17,17 @@ source=("git+$_url.git")
 sha256sums=('SKIP')
 
 prepare() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   git checkout v$pkgver
 }
 
 build() {
-	cd "$_pkgname"
-	make build
+  cd "$_pkgname"
+  make build
 }
 
 package() {
-	cd "$_pkgname"
+  cd "$_pkgname"
   ./bin/dsearch completion bash > dsearch.bash
   ./bin/dsearch completion zsh > dsearch.zsh
   ./bin/dsearch completion fish > dsearch.fish
