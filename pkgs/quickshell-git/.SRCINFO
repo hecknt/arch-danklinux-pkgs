@@ -28,6 +28,7 @@ pkgbase = quickshell-git
 	depends = mesa
 	depends = pam
 	depends = libpam.so
+	depends = polkit
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg

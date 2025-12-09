@@ -21,6 +21,7 @@ depends=(gcc-libs #libgcc_s.so libstdc++.so
          libxcb # libxcb.so
          mesa # libgbm.so
          pam libpam.so
+         polkit
          qt6-base # libQt6Core.so libQt6DBus.so libQt6Gui.so libQt6Network.so libQt6Widgets.so
          qt6-declarative # libQt6Qml.so libQt6Quick.so
          qt6-svg
