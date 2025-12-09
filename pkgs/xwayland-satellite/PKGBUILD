@@ -1,3 +1,6 @@
+# This is a modified version of the official Arch Linux package. On the official repos, this package is currently out of date.
+# https://gitlab.archlinux.org/archlinux/packaging/packages/xwayland-satellite
+# Maintainer: Hec <hec@heccraft.com>
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=xwayland-satellite
