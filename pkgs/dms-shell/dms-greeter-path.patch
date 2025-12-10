@@ -1,0 +1,22 @@
+diff --git a/quickshell/Modules/Greetd/assets/dms-greeter b/quickshell/Modules/Greetd/assets/dms-greeter
+index 4e6698cc..473f5d93 100755
+--- a/quickshell/Modules/Greetd/assets/dms-greeter
++++ b/quickshell/Modules/Greetd/assets/dms-greeter
+@@ -6,7 +6,7 @@ export WLR_DRM_DEVICES=/dev/dri/card1
+ 
+ COMPOSITOR=""
+ COMPOSITOR_CONFIG=""
+-DMS_PATH="dms-greeter"
++DMS_PATH="dms"
+ CACHE_DIR="/var/cache/dms-greeter"
+ 
+ show_help() {
+@@ -21,7 +21,7 @@ Required:
+ Options:
+     -C, --config PATH       Custom compositor config file
+     -p, --path PATH         DMS path (config name or absolute path)
+-                           (default: dms-greeter)
++                           (default: dms)
+     --cache-dir PATH        Cache directory for greeter data
+                            (default: /var/cache/dms-greeter)
+     -h, --help             Show this help message

@@ -1,10 +1,9 @@
 # Maintainer: Hec <hec@heccraft.com>
 
 _pkg1=DankMaterialShell
-pkgname=dms-shell
-pkgver=0.6.2
-pkgrel=4
-pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
+pkgname=(dms-shell greetd-dms-greeter)
+pkgver=1.0.0
+pkgrel=1
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
 license=(GPL-3.0-only)
@@ -12,7 +11,8 @@ depends=(dgop
          inter-font
          quickshell
          ttf-fira-code
-         ttf-material-symbols-variable)
+         ttf-material-symbols-variable
+         accountsservice)
 optdepends=('brightnessctl: Laptop display brightness control'
             'cava: Audio visualizer'
             'cliphist: Clipboard history functionality'
@@ -23,8 +23,15 @@ optdepends=('brightnessctl: Laptop display brightness control'
             'wl-clipboard: Copy functionality for PIDs and other elements')
 makedepends=(go)
 _archive="$_pkg1-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('a9f78299d560f3e361fd32757b2ccf869036a9f7e4ae33462368284e8f90fa78')
+source=("$url/archive/v$pkgver/$_archive.tar.gz" "greetd-dms-greeter.install" "dms-greeter-path.patch")
+sha256sums=('c60183e8f370216cd3a84c5d8034c8579e1d9d82e9b4466ceba9fc7cf41240fd'
+            'fd72627b9b242c6b70c56acb2a8a7881d2cb5c5fe7c7edeed307eb3b223c72f0'
+            '87ca0f53f542fa5525e9775a4b2eca93f97f87dfdc8aff3b4b974022df568a37')
+
+prepare() {
+  cd "$_archive"
+  patch -Np1 -i "$srcdir"/dms-greeter-path.patch
+}
 
 build() {
   cd "$_archive/core"
@@ -36,18 +43,40 @@ build() {
   go build -ldflags="-X main.Version=v$pkgver" -o dms ./cmd/dms
 }
 
-package() {
+package_dms-shell() {
+  pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
+
   cd "$_archive"
   ./core/dms completion bash > dms.bash
   ./core/dms completion zsh > dms.zsh
   ./core/dms completion fish > dms.fish
   install -Dm0755 -t "$pkgdir/usr/bin/" core/dms
-  install -dm0755 "$pkgdir/etc/xdg/quickshell/dms"
-  cp -r "quickshell/"* "$pkgdir/etc/xdg/quickshell/dms/"
+  install -dm0755 "$pkgdir/usr/share/quickshell/dms"
+  cp -r "quickshell/"* "$pkgdir/usr/share/quickshell/dms/"
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
   cp -r "docs/"* "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm0644 -t "$pkgdir/usr/lib/systemd/user/" quickshell/assets/systemd/dms.service
+  install -Dm0644 -t "$pkgdir/usr/lib/systemd/user/" assets/systemd/dms.service
   install -Dm644 dms.bash $pkgdir/usr/share/bash-completion/completions/dms
   install -Dm644 dms.zsh $pkgdir/usr/share/zsh/site-functions/_dms
   install -Dm644 dms.fish $pkgdir/usr/share/fish/vendor_completions.d/dms.fish
+}
+
+package_greetd-dms-greeter() {
+  depends+=(greetd dms-shell)
+  install=greetd-dms-greeter.install
+  backup=('etc/greetd/config.toml')
+  optdepends+=(
+    'niri: Niri compositor support'
+    'hyprland: Hyprland compositor support'
+    'sway: Sway compositor support'
+    'mangowc: MangoWC compositor support'
+  )
+
+  cd "$_archive"/quickshell
+  install -Dm755 "Modules/Greetd/assets/dms-greeter" "$pkgdir/usr/bin/dms-greeter"
+
+  install -Dm644 "Modules/Greetd/README.md" "$pkgdir/usr/share/doc/dms-greeter/README.md"
+
+  install -dm750 "$pkgdir/var/cache/dms-greeter"
+  install -Dm644 "systemd/tmpfiles-dms-greeter.conf" "$pkgdir/usr/lib/tmpfiles.d/dms-greeter.conf"
 }
