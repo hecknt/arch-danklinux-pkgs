@@ -3,7 +3,7 @@
 _pkg1=DankMaterialShell
 pkgname=(dms-shell greetd-dms-greeter)
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
 license=(GPL-3.0-only)
@@ -39,18 +39,26 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags="-X main.Version=v$pkgver" -o dms ./cmd/dms
+  make dist VERSION=${pkgver}
 }
 
 package_dms-shell() {
   pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 
+  case "$arch" in
+    x86_64)
+      DMS_BINARY="dms-linux-amd64"
+      ;;
+    aarch64)
+      DMS_BINARY="dms-linux-arm64"
+      ;;
+  esac
+
   cd "$_archive"
-  ./core/dms completion bash > dms.bash
-  ./core/dms completion zsh > dms.zsh
-  ./core/dms completion fish > dms.fish
-  install -Dm0755 -t "$pkgdir/usr/bin/" core/dms
+  ./core/bin/$DMS_BINARY completion bash > dms.bash
+  ./core/bin/$DMS_BINARY completion zsh > dms.zsh
+  ./core/bin/$DMS_BINARY completion fish > dms.fish
+  install -Dm0755 ./core/bin/$DMS_BINARY "$pkgdir/usr/bin/dms"
   install -dm0755 "$pkgdir/usr/share/quickshell/dms"
   cp -r "quickshell/"* "$pkgdir/usr/share/quickshell/dms/"
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md

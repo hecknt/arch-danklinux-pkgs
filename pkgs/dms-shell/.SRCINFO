@@ -1,6 +1,6 @@
 pkgbase = dms-shell
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -31,6 +31,7 @@ pkgname = dms-shell
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
 
 pkgname = greetd-dms-greeter
+	pkgdesc = DankMaterialShell greeter for greetd
 	install = greetd-dms-greeter.install
 	depends = dgop
 	depends = inter-font
