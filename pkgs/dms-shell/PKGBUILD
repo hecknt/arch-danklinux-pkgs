@@ -62,6 +62,7 @@ package_dms-shell() {
 }
 
 package_greetd-dms-greeter() {
+  pkgdesc='DankMaterialShell greeter for greetd'
   depends+=(greetd dms-shell)
   install=greetd-dms-greeter.install
   backup=('etc/greetd/config.toml')
