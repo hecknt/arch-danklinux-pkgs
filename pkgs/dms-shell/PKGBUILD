@@ -2,7 +2,7 @@
 
 _pkg1=DankMaterialShell
 pkgname=(dms-shell greetd-dms-greeter)
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=2
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -21,7 +21,8 @@ optdepends=('brightnessctl: Laptop display brightness control'
             'qt5ct: Qt5 application theming'
             'qt6ct: Qt6 application theming'
             'wl-clipboard: Copy functionality for PIDs and other elements')
-makedepends=(go)
+makedepends=(go
+  git)
 source=("git+$url.git" "greetd-dms-greeter.install" "dms-greeter-path.patch")
 sha256sums=('SKIP'
             'fd72627b9b242c6b70c56acb2a8a7881d2cb5c5fe7c7edeed307eb3b223c72f0'
