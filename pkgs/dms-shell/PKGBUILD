@@ -22,19 +22,19 @@ optdepends=('brightnessctl: Laptop display brightness control'
             'qt6ct: Qt6 application theming'
             'wl-clipboard: Copy functionality for PIDs and other elements')
 makedepends=(go)
-_archive="$_pkg1-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz" "greetd-dms-greeter.install" "dms-greeter-path.patch")
-sha256sums=('3cb952f15417487484137b010751efa997602a1f535605f472acd47d3d783161'
+source=("git+$url.git" "greetd-dms-greeter.install" "dms-greeter-path.patch")
+sha256sums=('SKIP'
             'fd72627b9b242c6b70c56acb2a8a7881d2cb5c5fe7c7edeed307eb3b223c72f0'
             '87ca0f53f542fa5525e9775a4b2eca93f97f87dfdc8aff3b4b974022df568a37')
 
 prepare() {
-  cd "$_archive"
+  cd "$_pkg1"
+  git checkout v$pkgver
   patch -Np1 -i "$srcdir"/dms-greeter-path.patch
 }
 
 build() {
-  cd "$_archive/core"
+  cd "$_pkg1/core"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -54,7 +54,7 @@ package_dms-shell() {
       ;;
   esac
 
-  cd "$_archive"
+  cd "$_pkg1"
   ./core/bin/$DMS_BINARY completion bash > dms.bash
   ./core/bin/$DMS_BINARY completion zsh > dms.zsh
   ./core/bin/$DMS_BINARY completion fish > dms.fish
@@ -81,7 +81,7 @@ package_greetd-dms-greeter() {
     'mangowc: MangoWC compositor support'
   )
 
-  cd "$_archive"/quickshell
+  cd "$_pkg1"/quickshell
   install -Dm755 "Modules/Greetd/assets/dms-greeter" "$pkgdir/usr/bin/dms-greeter"
 
   install -Dm644 "Modules/Greetd/README.md" "$pkgdir/usr/share/doc/dms-greeter/README.md"
