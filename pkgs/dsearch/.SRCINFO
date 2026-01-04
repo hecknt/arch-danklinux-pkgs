@@ -9,7 +9,7 @@ pkgbase = dsearch
 	makedepends = go
 	makedepends = git
 	optdepends = dms-shell
-	source = git+https://github.com/AvengeMedia/danksearch.git
-	sha256sums = SKIP
+	source = git+https://github.com/AvengeMedia/danksearch.git#tag=v0.1.1
+	sha256sums = 639b82e222b37ecaf0a29c51f9a93ae8700677450aec75d51fc71bf7f2f9865e
 
 pkgname = dsearch

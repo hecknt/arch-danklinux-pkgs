@@ -21,10 +21,10 @@ pkgbase = dms-shell
 	optdepends = qt5ct: Qt5 application theming
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
-	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
+	source = git+https://github.com/AvengeMedia/DankMaterialShell.git#tag=v1.0.3
 	source = greetd-dms-greeter.install
 	source = dms-greeter-path.patch
-	sha256sums = SKIP
+	sha256sums = a9e35f3a48564616517c594657919f2f785a0c26d9534dfee8d8fcc784ff5a6c
 	sha256sums = fd72627b9b242c6b70c56acb2a8a7881d2cb5c5fe7c7edeed307eb3b223c72f0
 	sha256sums = 87ca0f53f542fa5525e9775a4b2eca93f97f87dfdc8aff3b4b974022df568a37
 
