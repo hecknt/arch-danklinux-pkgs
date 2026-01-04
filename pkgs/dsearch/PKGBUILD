@@ -2,7 +2,7 @@
 
 pkgname=dsearch
 _pkgname=danksearch
-pkgver=0.1.1
+pkgver=0.1.1 # renovate: datasource=github-releases depName=AvengeMedia/danksearch
 pkgrel=1
 pkgdesc="Indexed filesystem search in GO"
 arch=('x86_64' 'aarch64')
@@ -13,13 +13,8 @@ depends=()
 makedepends=(go
   git)
 optdepends=(dms-shell)
-source=("git+$_url.git")
+source=("git+$_url.git#tag=v$pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$_pkgname"
-  git checkout v$pkgver
-}
 
 build() {
   cd "$_pkgname"
