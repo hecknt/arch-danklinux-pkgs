@@ -3,7 +3,7 @@
 _pkg1=DankMaterialShell
 pkgname=(dms-shell greetd-dms-greeter)
 pkgver=1.2.0 # renovate: datasource=github-releases depName=AvengeMedia/DankMaterialShell
-pkgrel=3
+pkgrel=1
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
 license=(GPL-3.0-only)
