@@ -36,8 +36,8 @@ makedepends=(cli11
              git)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git#commit=db37dc580afc9db1bc598436649c650138b6166d")
+sha256sums=('db05b1ec97bdb384aec51686e14d18f507938d892e3daf9c206cb099ae184395')
 
 pkgver() {
   cd "$_pkgname"

@@ -37,7 +37,7 @@ pkgbase = quickshell-git
 	depends = libwayland-client.so
 	provides = quickshell
 	conflicts = quickshell
-	source = git+https://git.outfoxxed.me/quickshell/quickshell.git
-	sha256sums = SKIP
+	source = git+https://git.outfoxxed.me/quickshell/quickshell.git#commit=db37dc580afc9db1bc598436649c650138b6166d
+	sha256sums = db05b1ec97bdb384aec51686e14d18f507938d892e3daf9c206cb099ae184395
 
 pkgname = quickshell-git
