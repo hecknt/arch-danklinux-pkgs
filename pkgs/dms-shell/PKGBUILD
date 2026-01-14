@@ -20,7 +20,8 @@ optdepends=('brightnessctl: Laptop display brightness control'
             'networkmanager: Required for network management'
             'qt5ct: Qt5 application theming'
             'qt6ct: Qt6 application theming'
-            'wl-clipboard: Copy functionality for PIDs and other elements')
+            'wl-clipboard: Copy functionality for PIDs and other elements'
+            'khal: Enrich calendar with events from local, CalDAV, or other sources supported by khal.')
 makedepends=(go
   git)
 source=("git+$url.git#tag=v$pkgver" "greetd-dms-greeter.install" "dms-greeter-path.patch")
@@ -58,11 +59,15 @@ package_dms-shell() {
   ./core/bin/$DMS_BINARY completion bash > dms.bash
   ./core/bin/$DMS_BINARY completion zsh > dms.zsh
   ./core/bin/$DMS_BINARY completion fish > dms.fish
+
   install -Dm0755 ./core/bin/$DMS_BINARY "$pkgdir/usr/bin/dms"
   install -dm0755 "$pkgdir/usr/share/quickshell/dms"
   cp -r "quickshell/"* "$pkgdir/usr/share/quickshell/dms/"
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
   cp -r "docs/"* "$pkgdir/usr/share/doc/$pkgname/"
+
+  install -Dpm0644 -t "$pkgdir/usr/lib/pam.d/" quickshell/assets/pam/*
+
   install -Dm0644 -t "$pkgdir/usr/lib/systemd/user/" assets/systemd/dms.service
   install -Dm644 dms.bash $pkgdir/usr/share/bash-completion/completions/dms
   install -Dm644 dms.zsh $pkgdir/usr/share/zsh/site-functions/_dms
