@@ -1,5 +1,5 @@
 pkgbase = dms-shell
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = dms-shell
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
 	optdepends = khal: Enrich calendar with events from local, CalDAV, or other sources supported by khal.
-	source = git+https://github.com/AvengeMedia/DankMaterialShell.git#tag=v1.4.1
+	source = git+https://github.com/AvengeMedia/DankMaterialShell.git#tag=v1.4.2
 	source = greetd-dms-greeter.install
 	source = dms-greeter-path.patch
-	sha256sums = dd5f304b7112f5aa35126b6bee83eb1665072cba2c2c336f3396792c6e93385f
+	sha256sums = b7984b4a4ba9cd109a2c9fd2bd26e0e3eb1aa5ef0b738027565589ee4c67e649
 	sha256sums = fd72627b9b242c6b70c56acb2a8a7881d2cb5c5fe7c7edeed307eb3b223c72f0
 	sha256sums = 87ca0f53f542fa5525e9775a4b2eca93f97f87dfdc8aff3b4b974022df568a37
 
