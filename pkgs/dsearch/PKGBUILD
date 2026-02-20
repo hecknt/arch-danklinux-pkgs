@@ -14,7 +14,7 @@ makedepends=(go
   git)
 optdepends=(dms-shell)
 source=("git+$_url.git#tag=v$pkgver")
-sha256sums=('a3b30f8baf9d8a7f96eb802d2634b521496b1cad8b7c4f3de263274f0fb48c3a')
+sha256sums=('01fe1b16c9bbbcdc5625652f2119221bff0e104a0239780e31cf71d8d10f0d70')
 
 build() {
   cd "$_pkgname"
