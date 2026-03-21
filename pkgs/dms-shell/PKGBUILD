@@ -25,7 +25,7 @@ optdepends=('brightnessctl: Laptop display brightness control'
 makedepends=(go
   git)
 source=("git+$url.git#tag=v$pkgver" "greetd-dms-greeter.install" "dms-greeter-path.patch")
-sha256sums=('b7984b4a4ba9cd109a2c9fd2bd26e0e3eb1aa5ef0b738027565589ee4c67e649'
+sha256sums=('0390010c1696930dccce39b61d8fbdd9730c41dfa9134d0770e6dbe01faee048'
             'fd72627b9b242c6b70c56acb2a8a7881d2cb5c5fe7c7edeed307eb3b223c72f0'
             '87ca0f53f542fa5525e9775a4b2eca93f97f87dfdc8aff3b4b974022df568a37')
 
