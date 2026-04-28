@@ -1,3 +1,11 @@
+> [!WARNING]
+>
+> This repo has been archived thanks to the inclusion of DMS in Arch Linux's `extra` repository.
+>
+> If you need DankMaterialShell on Arch Linux, you can install it via `pacman -S dms-shell`. No extra repositories needed.
+>
+> If you need `quickshell-git` for any additional functionality within DMS, you're better off compiling it yourself with the AUR package.
+
 # Dank Linux Packages for Arch Linux
 
 This repository includes a few packages relating to AvengeMedia's [Dank Linux](https://danklinux.com), including dms-shell and various other tools/compositors surrounding it. All PKGBUILDs are listed in the `pkgs/` folder in the repository root.
